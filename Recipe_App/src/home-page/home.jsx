@@ -1,3 +1,10 @@
+import { useContext } from "react";
+import {GlobalContext} from '../context/context'
+import ReceipeCard from "../components/receipe-card/receipe-card";
+
+
+
 export default function HomePage() {
-  return <div>Home</div>;
+  const {apiResponse} = useContext(GlobalContext)
+  return <div><ReceipeCard/></div>;
 }
