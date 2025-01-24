@@ -6,6 +6,7 @@ export default function GlobalState({ children }) {
   const [apiResponse, setApiResponse] = useState([]);
   const [search, setSearch] = useState("");
   const [handleSearch, setHandleSearch] = useState("");
+  const [detailsResponse, setDetailsResponse] = useState([]);
 
   async function FetchData() {
     try {
@@ -33,6 +34,9 @@ export default function GlobalState({ children }) {
         setSearch,
         handleSearch,
         setHandleSearch,
+        detailsResponse,
+        setDetailsResponse,
+        FetchData
       }}
     >
       {children}
