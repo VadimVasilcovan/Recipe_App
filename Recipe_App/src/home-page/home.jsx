@@ -5,6 +5,6 @@ import '../home-page/home.css'
 
 
 export default function HomePage() {
-  const {apiResponse} = useContext(GlobalContext)
+  
   return <div className="home-page-main-div"><span><ReceipeCard/></span></div>;
 }

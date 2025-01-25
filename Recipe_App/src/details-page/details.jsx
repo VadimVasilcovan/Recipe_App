@@ -4,7 +4,8 @@ import { GlobalContext } from "../context/context";
 
 export default function Details() {
   const { id } = useParams();
-  const { detailsResponse, setDetailsResponse, handleAddToFavorite } = useContext(GlobalContext);
+  const { detailsResponse, setDetailsResponse, handleAddToFavorite } =
+    useContext(GlobalContext);
 
   async function FetchDetails() {
     try {
@@ -25,20 +26,28 @@ export default function Details() {
   const recipe = detailsResponse?.data?.recipe;
   return (
     <div>
-    <div>  <h1>{recipe?.title}</h1>
-      <img src={recipe?.image_url} alt={recipe?.title} />
-      <p>Publisher: {recipe?.publisher}</p>
-      <p>Cooking Time: {recipe?.cooking_time} minutes</p>
-      <p>Servings: {recipe?.servings}</p></div>
-    <div>  {recipe?.ingredients?.map((ingredient, index) => (
-        <li key={index}>
-          <span>
-            {ingredient?.quantity} {ingredient?.unit}
-          </span>
-          <span>{ingredient.description}</span>
-        </li>
-      ))}</div>
-      <button onClick={() => handleAddToFavorite(recipe)}>Add to favorites </button>
+      <div>
+        {" "}
+        <h1>{recipe?.title}</h1>
+        <img src={recipe?.image_url} alt={recipe?.title} />
+        <p>Publisher: {recipe?.publisher}</p>
+        <p>Cooking Time: {recipe?.cooking_time} minutes</p>
+        <p>Servings: {recipe?.servings}</p>
+      </div>
+      <div>
+        {" "}
+        {recipe?.ingredients?.map((ingredient, index) => (
+          <li key={index}>
+            <span>
+              {ingredient?.quantity} {ingredient?.unit}
+            </span>
+            <span>{ingredient.description}</span>
+          </li>
+        ))}
+      </div>
+      <button onClick={() => handleAddToFavorite(recipe)}>
+        Add to favorites{" "}
+      </button>
     </div>
   );
 }
