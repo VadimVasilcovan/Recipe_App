@@ -12,7 +12,8 @@ export default function ReceipeCard() {
         <div key={recipe.id} className="card-main-div">
           <p>{recipe.title}</p>
           <img className="img-card-holder" src={recipe?.image_url} />
-          <NavLink to={`/details/${recipe?.id}`}>Recipe Details</NavLink>
+          
+          <button className="add-to-favorites-button"><NavLink to={`/details/${recipe?.id}`}>Recipe Details</NavLink></button>
           <button className="add-to-favorites-button">Add to favorites</button>
         </div>
       ))}
