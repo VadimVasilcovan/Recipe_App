@@ -22,15 +22,23 @@ export default function Details() {
     FetchDetails();
   }, [id]);
 
-
-  const recipe  = detailsResponse?.data?.recipe;
+  const recipe = detailsResponse?.data?.recipe;
   return (
     <div>
-    <h1>{recipe?.title}</h1>
-    <img src={recipe?.image_url} alt={recipe?.title} />
-    <p>Publisher: {recipe?.publisher}</p>
-    <p>Cooking Time: {recipe?.cooking_time} minutes</p>
-    <p>Servings: {recipe?.servings}</p>
-  </div>
+      <h1>{recipe?.title}</h1>
+      <img src={recipe?.image_url} alt={recipe?.title} />
+      <p>Publisher: {recipe?.publisher}</p>
+      <p>Cooking Time: {recipe?.cooking_time} minutes</p>
+      <p>Servings: {recipe?.servings}</p>
+      {recipe?.ingredients?.map((ingredient, index) => (
+        <li key={index}>
+          <span>
+            {ingredient?.quantity} {ingredient?.unit}
+          </span>
+          <span>{ingredient.description}</span>
+        </li>
+      ))}
+      <button>Add to favorites </button>
+    </div>
   );
 }

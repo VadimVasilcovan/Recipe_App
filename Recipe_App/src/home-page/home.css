@@ -1,0 +1,5 @@
+.home-page-main-div{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
