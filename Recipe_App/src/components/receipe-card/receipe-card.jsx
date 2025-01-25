@@ -4,7 +4,7 @@ import { GlobalContext } from "../../context/context";
 import { NavLink } from "react-router-dom";
 
 export default function ReceipeCard() {
-  const { apiResponse, FetchData } = useContext(GlobalContext);
+  const { apiResponse } = useContext(GlobalContext);
 
   return (
     <div>

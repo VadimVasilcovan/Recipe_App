@@ -7,6 +7,7 @@ export default function GlobalState({ children }) {
   const [search, setSearch] = useState("");
   const [handleSearch, setHandleSearch] = useState("");
   const [detailsResponse, setDetailsResponse] = useState([]);
+  const [favoriteList, setFavoriteList] = useState([]);
 
   async function FetchData() {
     try {
@@ -25,6 +26,19 @@ export default function GlobalState({ children }) {
     FetchData();
   }, [handleSearch]);
 
+
+  function handleAddToFavorite(getCurrentItem){
+    let copyFavoriteList = [...favoriteList];
+    const index = copyFavoriteList.findIndex(item => item.id === getCurrentItem.id)
+    if(index === -1){
+      copyFavoriteList.push(getCurrentItem)
+    }else{
+      copyFavoriteList.splice(index)
+    }
+    setFavoriteList(copyFavoriteList)
+  }
+
+  console.log(favoriteList, 'favoriteList')
   return (
     <GlobalContext.Provider
       value={{
@@ -36,7 +50,9 @@ export default function GlobalState({ children }) {
         setHandleSearch,
         detailsResponse,
         setDetailsResponse,
-        FetchData
+        FetchData,
+        handleAddToFavorite,
+        favoriteList
       }}
     >
       {children}
